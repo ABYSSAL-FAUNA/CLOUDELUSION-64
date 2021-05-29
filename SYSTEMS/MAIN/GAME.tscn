@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SYSTEMS/PLAYER/PLAYER.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SYSTEMS/INTERFACES/MENU.tscn" type="PackedScene" id=3]
+
+[node name="GAME" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MENU" parent="." instance=ExtResource( 3 )]
+
+[node name="BG" parent="MENU" index="0"]
+color = Color( 0.866667, 0.890196, 0.890196, 1 )
+
+[node name="PROGRESS" parent="MENU/START" index="2"]
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
+
+[node name="AREA" parent="MENU/EXIT" index="0"]
+collision_mask = 2147483649
+
+[node name="PROGRESS" parent="MENU/EXIT" index="2"]
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
+
+[node name="PROGRESS" parent="MENU/SETTINGS" index="2"]
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
+
+[node name="TITLE" parent="MENU" index="8"]
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
+
+[node name="PLAYER" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.951466 )
+position = Vector2( 640, 640 )
+z_index = 128
+collision_layer = 1
+collision_mask = 0
+
+[node name="RECT" parent="PLAYER" index="0"]
+color = Color( 0.0627451, 0.12549, 0.188235, 1 )
+
+[node name="PLAYER_CAMERA" parent="PLAYER/PIVOT" index="0"]
+smoothing_speed = 10.0
+drag_margin_left = 0.4
+drag_margin_top = 0.4
+drag_margin_right = 0.4
+drag_margin_bottom = 0.4
+
+[editable path="MENU"]
+
+[editable path="PLAYER"]
