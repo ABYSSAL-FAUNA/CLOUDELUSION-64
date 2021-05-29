@@ -502,8 +502,8 @@ tracks/5/keys = {
 }
 
 [sub_resource type="DynamicFont" id=8]
-size = 20
-extra_spacing_char = 60
+size = 40
+extra_spacing_char = 40
 font_data = ExtResource( 8 )
 
 [node name="MENU" type="Control"]
@@ -519,6 +519,8 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color( 0.0627451, 0.12549, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

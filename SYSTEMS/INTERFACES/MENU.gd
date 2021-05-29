@@ -23,7 +23,7 @@ func _on_START_OPEN() -> void:
 	queue_free()
 
 func _on_EXIT_OPEN() -> void:
-	get_node("EXIT").position = Vector2(rand_range(100, 1180), rand_range(448, 620))
+	get_node("EXIT").position = Vector2(rand_range(720, 1180), rand_range(448, 620))
 	get_node("EXIT/PROGRESS").value = 0
 	get_node("EXIT").STOP_ANIMATE = true
 	get_node("EXIT").progress()
