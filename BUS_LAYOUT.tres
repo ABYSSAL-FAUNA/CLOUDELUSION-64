@@ -1,0 +1,25 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=2]
+
+[sub_resource type="AudioEffectLowPassFilter" id=1]
+resource_name = "LowPassFilter"
+db = 1
+
+[sub_resource type="AudioEffectReverb" id=2]
+resource_name = "Reverb"
+damping = 0.0
+spread = 0.2
+hipass = 1.0
+dry = 0.5
+wet = 1.0
+
+[resource]
+bus/1/name = "PAUSE"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -2.51026
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource( 2 )
+bus/1/effect/1/enabled = true

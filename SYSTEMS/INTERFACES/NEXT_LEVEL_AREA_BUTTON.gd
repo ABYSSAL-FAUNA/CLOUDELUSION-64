@@ -3,17 +3,17 @@ extends Sprite
 signal OPEN
 var STATE : bool
 
-func _ready():
+func _ready() -> void:
 	get_node("PROGRESS").value = 0
 	progress()
 
-func _on_AREA_body_entered(_body):
+func _on_AREA_body_entered(_body) -> void:
 	STATE = true
 
-func _on_AREA_body_exited(_body):
+func _on_AREA_body_exited(_body) -> void:
 	STATE = false
 
-func progress():
+func progress() -> void:
 	if get_node("PROGRESS").value != 100:
 		if STATE == true:
 			get_node("TIMER").start()

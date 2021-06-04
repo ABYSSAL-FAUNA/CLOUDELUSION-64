@@ -6,16 +6,16 @@ var STATE : bool
 var STOP_ANIMATE : bool = true
 onready var ANIMATION_PLAYER = get_node("../ANIMATION_PLAYER")
 
-func _ready():
+func _ready() -> void:
 	progress()
 
-func _on_AREA_body_entered(_body):
+func _on_AREA_body_entered(_body) -> void:
 	_on_BUTTON_button_down()
 
-func _on_AREA_body_exited(_body):
+func _on_AREA_body_exited(_body) -> void:
 	_on_BUTTON_button_up()
 
-func progress():
+func progress() -> void:
 	if get_node("PROGRESS").value != 100:
 		if STATE == true:
 			get_node("TIMER").start()
@@ -31,7 +31,7 @@ func progress():
 		get_node("AREA/SHAPE").disabled = true
 		emit_signal("OPEN")
 
-func _on_BUTTON_button_down():
+func _on_BUTTON_button_down() -> void:
 	STATE = true
 	z_index = 1
 	emit_signal("ENTER", self.name)

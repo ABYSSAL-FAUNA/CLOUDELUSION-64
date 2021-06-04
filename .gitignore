@@ -1,3 +1,5 @@
 .import
+*.mp3
+*.wav
 *.cfg
 *.ini

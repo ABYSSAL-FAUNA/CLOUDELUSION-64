@@ -1,31 +1,21 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://SYSTEMS/INTERFACES/MENU.gd" type="Script" id=1]
-[ext_resource path="res://RESOURCES/FONTS/Exo2-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RESOURCES/FONTS/TITLE.tres" type="DynamicFont" id=2]
 [ext_resource path="res://RESOURCES/PICTURES/AREA_BUTTON_LOADING.png" type="Texture" id=3]
-[ext_resource path="res://RESOURCES/PICTURES/icon.png" type="Texture" id=4]
+[ext_resource path="res://RESOURCES/PICTURES/START.png" type="Texture" id=4]
 [ext_resource path="res://SYSTEMS/INTERFACES/AREA_BUTTON.gd" type="Script" id=5]
 [ext_resource path="res://RESOURCES/PICTURES/EXIT.png" type="Texture" id=6]
 [ext_resource path="res://RESOURCES/PICTURES/SETTINGS.png" type="Texture" id=7]
-[ext_resource path="res://RESOURCES/FONTS/Pixel2Drg.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://RESOURCES/PICTURES/EXSPIRAVIT_1104.png" type="Texture" id=9]
 [ext_resource path="res://RESOURCES/PICTURES/ABYSSAL_FAUNA.png" type="Texture" id=10]
-
-[sub_resource type="DynamicFont" id=1]
-size = 15
-use_filter = true
-extra_spacing_char = 4
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24, 24 )
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("..:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -37,24 +27,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../PLAYER:modulate")
+tracks/1/path = NodePath("TITLE:custom_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( -0.01, 1 ),
-"transitions": PoolRealArray( 0.2, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("TITLE:custom_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -99,19 +77,19 @@ tracks/2/keys = {
 "values": [ Color( 0.866667, 0.890196, 0.890196, 1 ), Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../PLAYER/RECT:color")
+tracks/3/path = NodePath("SETTINGS/PROGRESS:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 0.2 ),
+"transitions": PoolRealArray( 0.2, 1 ),
 "update": 0,
 "values": [ Color( 0.866667, 0.890196, 0.890196, 1 ), Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("SETTINGS/PROGRESS:tint_progress")
+tracks/4/path = NodePath("TITLE:custom_colors/font_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -123,7 +101,7 @@ tracks/4/keys = {
 "values": [ Color( 0.866667, 0.890196, 0.890196, 1 ), Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("TITLE:custom_colors/font_color")
+tracks/5/path = NodePath("../PLAYER/RECT:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -137,7 +115,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "INIT"
-length = 5.5
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("START:position")
 tracks/0/interp = 1
@@ -145,7 +123,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 3.7, 4.7 ),
+"times": PoolRealArray( 4.2, 5 ),
 "transitions": PoolRealArray( 0.2, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 600 ), Vector2( 640, 448 ) ]
@@ -157,7 +135,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3.9, 4.7 ),
+"times": PoolRealArray( 4.4, 5 ),
 "transitions": PoolRealArray( 0.2, 1 ),
 "update": 0,
 "values": [ Vector2( 960, 600 ), Vector2( 960, 448 ) ]
@@ -169,7 +147,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 3.5, 4.7 ),
+"times": PoolRealArray( 4, 5 ),
 "transitions": PoolRealArray( 0.2, 1 ),
 "update": 0,
 "values": [ Vector2( 320, 600 ), Vector2( 320, 448 ) ]
@@ -181,7 +159,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3.7, 4.7 ),
+"times": PoolRealArray( 0, 4.2, 5 ),
 "transitions": PoolRealArray( 1, 0.2, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -193,7 +171,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 3.9, 4.7 ),
+"times": PoolRealArray( 0, 4.4, 5 ),
 "transitions": PoolRealArray( 1, 0.2, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -205,7 +183,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 4, 5 ),
 "transitions": PoolRealArray( 1, 0.2, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -217,7 +195,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ "", "", "CLOUDELUSION 64" ]
@@ -229,7 +207,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -241,7 +219,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 4, 5 ),
 "transitions": PoolRealArray( 1, 0.2, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 320 ), Vector2( 0, 320 ), Vector2( 0, 240 ) ]
@@ -253,10 +231,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.2, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("TITLE:custom_colors/font_color")
@@ -277,10 +255,10 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 0.2, 0.2, 0.2, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 0.2, 1, 0.2, 0.2, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("START/AREA/SHAPE:disabled")
@@ -289,7 +267,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -301,7 +279,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -313,7 +291,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -331,79 +309,79 @@ tracks/15/keys = {
 "values": [ ExtResource( 9 ), ExtResource( 10 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("../PLAYER/RECT:color")
+tracks/16/path = NodePath("START/BUTTON:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
-"transitions": PoolRealArray( 1, 0.2, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0.866667, 0.890196, 0.890196, 1 ) ]
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("START/BUTTON:disabled")
+tracks/17/path = NodePath("EXIT/BUTTON:disabled")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("EXIT/BUTTON:disabled")
+tracks/18/path = NodePath("SETTINGS/BUTTON:disabled")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("SETTINGS/BUTTON:disabled")
+tracks/19/path = NodePath("BG:color")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0, 4.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("../PLAYER:visible")
+tracks/20/path = NodePath("BG:modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 0.2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("../PLAYER:MAX_SPEED")
+tracks/21/path = NodePath("BOOT_SPLASH:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 200 ]
+"values": [ true, false ]
 }
-tracks/22/type = "value"
-tracks/22/path = NodePath("BG:color")
+tracks/22/type = "method"
+tracks/22/path = NodePath(".")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -411,23 +389,37 @@ tracks/22/enabled = true
 tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
+"values": [ {
+"args": [  ],
+"method": "play_audio"
+} ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("BG:modulate")
+tracks/23/path = NodePath("../PLAYER:MAX_SPEED")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 0, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 0.2, 1 ),
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 200 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("../PLAYER:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 0.2 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.0627451, 0.12549, 0.188235, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG:color")
 tracks/0/interp = 1
@@ -465,7 +457,7 @@ tracks/2/keys = {
 "values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ), Color( 0.866667, 0.890196, 0.890196, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../PLAYER/RECT:color")
+tracks/3/path = NodePath("SETTINGS/PROGRESS:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -477,7 +469,7 @@ tracks/3/keys = {
 "values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ), Color( 0.866667, 0.890196, 0.890196, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("SETTINGS/PROGRESS:tint_progress")
+tracks/4/path = NodePath("TITLE:custom_colors/font_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -489,7 +481,7 @@ tracks/4/keys = {
 "values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ), Color( 0.866667, 0.890196, 0.890196, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("TITLE:custom_colors/font_color")
+tracks/5/path = NodePath("../PLAYER/RECT:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -501,15 +493,9 @@ tracks/5/keys = {
 "values": [ Color( 0.0627451, 0.12549, 0.188235, 1 ), Color( 0.866667, 0.890196, 0.890196, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
-size = 40
-extra_spacing_char = 40
-font_data = ExtResource( 8 )
-
 [node name="MENU" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -549,7 +535,7 @@ margin_right = 36.0
 margin_bottom = 36.0
 texture_progress = ExtResource( 3 )
 fill_mode = 8
-tint_progress = Color( 0.866667, 0.890196, 0.890196, 1 )
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -593,7 +579,7 @@ margin_right = 36.0
 margin_bottom = 36.0
 texture_progress = ExtResource( 3 )
 fill_mode = 8
-tint_progress = Color( 0.866667, 0.890196, 0.890196, 1 )
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -636,7 +622,7 @@ margin_right = 36.0
 margin_bottom = 36.0
 texture_progress = ExtResource( 3 )
 fill_mode = 8
-tint_progress = Color( 0.866667, 0.890196, 0.890196, 1 )
+tint_progress = Color( 0.0627451, 0.12549, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -663,9 +649,10 @@ position = Vector2( 640, 360 )
 anims/CHANGE_SCENE = SubResource( 4 )
 anims/IN = SubResource( 5 )
 anims/INIT = SubResource( 6 )
-anims/OUT = SubResource( 7 )
+anims/OUT = SubResource( 8 )
 
 [node name="BOOT_SPLASH" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 640, 360 )
 texture = ExtResource( 10 )
@@ -684,7 +671,7 @@ margin_right = 1280.0
 margin_bottom = 298.0
 size_flags_horizontal = 5
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.866667, 0.890196, 0.890196, 1 )
 text = "CLOUDELUSION 64"
 align = 1

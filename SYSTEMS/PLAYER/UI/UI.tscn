@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SYSTEMS/INTERFACES/TIMER_NODE.gd" type="Script" id=1]
+[ext_resource path="res://RESOURCES/FONTS/Pixel2Drg.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://SYSTEMS/INTERFACES/PAUSE_NODE.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+extra_spacing_char = 120
+font_data = ExtResource( 2 )
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TIMER_NODE" type="Control" parent="."]
+pause_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TIMER" type="Timer" parent="TIMER_NODE"]
+wait_time = 0.001
+
+[node name="PAUSE_NODE" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CANVAS_LAYER" type="CanvasLayer" parent="PAUSE_NODE"]
+layer = 126
+
+[node name="RECT" type="ColorRect" parent="PAUSE_NODE/CANVAS_LAYER"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.12549, 0.188235, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LABEL" type="Label" parent="PAUSE_NODE/CANVAS_LAYER"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.866667, 0.890196, 0.890196, 1 )
+text = "PAUSE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

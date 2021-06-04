@@ -1,30 +1,33 @@
 extends Control
 
-var MAIN = preload("res://SYSTEMS/MAIN/MAIN.tscn")
 onready var CAMERA = $CAMERA
 onready var ANIMATION_PLAYER = $ANIMATION_PLAYER
 onready var PLAYER = $"../PLAYER"
 onready var LABEL = $TITLE
 onready var GAME = $".."
+onready var BGM = $"../SOUNDS/BGM"
 
 func _ready() -> void:
+	yield(get_tree().get_root().get_node("INIT"), "tree_exited")
+	get_node("../CURSOR").hide()
+	get_node("../EFFECTS/FX_CANVAS_LAYER #3/FX #3").hide()
 	randomize()
-	OS.window_maximized = true
 	PLAYER.IN_GAME = false
 	PLAYER.global_position = Vector2(640, 640)
-	PLAYER.get_node("PIVOT/PLAYER_CAMERA").current = false
+	PLAYER.get_node("PLAYER_CAMERA").current = false
 	CAMERA.current = true
 	ANIMATION_PLAYER.play("INIT")
+	yield(ANIMATION_PLAYER, "animation_finished")
 
 func _on_START_OPEN() -> void:
 	ANIMATION_PLAYER.play("CHANGE_SCENE")
 	yield(ANIMATION_PLAYER, "animation_finished")
-	get_node("..").add_child(MAIN.instance())
+	GameControl.load_scene(GameControl.MAIN_SCENE, get_node(".."))
 	queue_free()
 
 func _on_EXIT_OPEN() -> void:
-	get_node("EXIT").position = Vector2(rand_range(720, 1180), rand_range(448, 620))
 	get_node("EXIT/PROGRESS").value = 0
+	get_node("EXIT").position = Vector2(rand_range(720, 1180), rand_range(448, 620))
 	get_node("EXIT").STOP_ANIMATE = true
 	get_node("EXIT").progress()
 	get_node("EXIT/AREA/SHAPE").disabled = false
@@ -47,3 +50,6 @@ func _on_ENTER(NAME) -> void:
 			return false
 		yield(TIMER, "timeout")
 		LABEL.percent_visible += 0.05
+
+func play_audio() -> void:
+	BGM.playing = true

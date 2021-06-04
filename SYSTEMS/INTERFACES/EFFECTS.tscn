@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://RESOURCES/PICTURES/FX #1.png" type="Texture" id=1]
+[ext_resource path="res://RESOURCES/SHADERS/GLITCH #1.tres" type="Material" id=2]
+[ext_resource path="res://RESOURCES/SHADERS/RETRO #1.tres" type="Material" id=3]
+[ext_resource path="res://RESOURCES/PICTURES/FRAME #1.png" type="Texture" id=4]
+
+[node name="EFFECTS" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FX_CANVAS_LAYER #3" type="CanvasLayer" parent="."]
+
+[node name="FX #3" type="TextureRect" parent="FX_CANVAS_LAYER #3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -320.0
+margin_right = 900.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FX_CANVAS_LAYER #1" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="FX #2" type="TextureRect" parent="FX_CANVAS_LAYER #1"]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FX #1" type="TextureRect" parent="FX_CANVAS_LAYER #1"]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -25,8 +25,8 @@ func _physics_process(delta) -> void:
 	else:
 		IDLE_STATE = false
 		apply_movement(AXIS * ACCELERATION * delta)
-	
 	MOTION = move_and_slide(MOTION)
+	
 	if IN_GAME == true:
 		LEVEL_HINT.show()
 		LEVEL_HINT.look_at(get_node("../MAIN/NEXT_LEVEL").global_position)
@@ -42,6 +42,3 @@ func apply_friction(AMOUNT) -> void:
 func apply_movement(_ACCELERATION) -> void:
 	MOTION += _ACCELERATION
 	MOTION = MOTION.clamped(MAX_SPEED)
-
-func MAP_HIGH_LIGHT() -> void:
-	pass

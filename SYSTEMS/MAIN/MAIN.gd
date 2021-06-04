@@ -15,10 +15,9 @@ var ERASE_FRACTION : float = 0.1
 var PLAYER_START_POS := Vector2(32, 32)
 var PLAYER_END_POS : Vector2
 var GLOBAL_CAMERA_ZOOM : float = 3
-var MENU = load("res://SYSTEMS/INTERFACES/MENU.tscn")
 var INPUT_DEBUG : bool = false
 onready var MAP = get_node("TILE_MAP")
-onready var PLAYER_CAMERA = get_node("../PLAYER/PIVOT/PLAYER_CAMERA")
+onready var PLAYER_CAMERA = get_node("../PLAYER/PLAYER_CAMERA")
 onready var GLOBAL_CAMERA = get_node("GLOBAL_CAMERA")
 onready var PLAYER = get_node("../PLAYER")
 onready var NEXT_LEVEL = get_node("NEXT_LEVEL")
@@ -41,10 +40,21 @@ func _input(event : InputEvent) -> void:
 				NEXT_LEVEL.show()
 		if event.is_action_pressed("ui_reset"):
 			INIT()
-		if event.is_action_pressed("ui_accept"):
+		if event.is_action_pressed("ui_next_level"):
 			_on_NEXT_LEVEL_OPEN()
+		if event.is_action_pressed("ui_previous_level"):
+			HEIGHT -= 2
+			WIDTH -= 2
+			print("LAYER: " + str((HEIGHT + 1) / 2 - 4))
+			GLOBAL_CAMERA_ZOOM -= 0.185
+			ANIMATION_PLAYER.stop()
+			ANIMATION_PLAYER.play("CLOSE")
+			INIT()
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	get_node("../CURSOR").show()
+	get_node("../EFFECTS/FX_CANVAS_LAYER #3/FX #3").show()
 	get_node("..").modulate = Color.transparent
 	randomize()
 	MAP_SEED = randi()
@@ -58,6 +68,7 @@ func _ready() -> void:
 	PLAYER.modulate = Color.white
 	PLAYER.IN_GAME = true
 	INIT()
+	PLAYER.get_node("UI/TIMER_NODE").start_timer()
 
 func INIT() -> void:
 	PLAYER_END_POS = Vector2(WIDTH * 64 - 32 - 128 * (randi() % ((WIDTH + 1) / 4)), HEIGHT * 64 - 32 - 128 * (randi() % ((HEIGHT + 1) / 4)))
@@ -67,12 +78,13 @@ func INIT() -> void:
 	NEXT_LEVEL.global_position = PLAYER_END_POS
 	MAKE_MAZE()
 	ERASE_WALLS()
+	MAP.global_position = Vector2.ZERO
 	TILE_SIZE = MAP.cell_size
+	print("LAYER: %s" % ((HEIGHT + 1) / 2 - 4))
 	ANIMATION_PLAYER.stop()
 	ANIMATION_PLAYER.play("INIT")
 
 func CHECK_NEIGHBORS(CELL : Vector2, UNVISIT : Array) -> Array:
-	# warning-ignore:unassigned_variable
 	var LIST : Array
 	for n in CELL_WALLS.keys():
 		if CELL + n in UNVISIT:
@@ -80,9 +92,7 @@ func CHECK_NEIGHBORS(CELL : Vector2, UNVISIT : Array) -> Array:
 	return LIST
 
 func MAKE_MAZE() -> void:
-	# warning-ignore:unassigned_variable
 	var UNVISITED : Array
-	# warning-ignore:unassigned_variable
 	var STACK : Array
 	MAP.clear()
 	for x in range(WIDTH):
@@ -113,34 +123,33 @@ func MAKE_MAZE() -> void:
 			CURRENT = STACK.pop_back()
 
 func ERASE_WALLS() -> void:
-	# randomly remove a number of the map's walls
 	for _i in range(int(WIDTH * HEIGHT * ERASE_FRACTION)):
 		var x = int(rand_range(2, WIDTH/2 - 2)) * 2
 		var y = int(rand_range(2, HEIGHT/2 - 2)) * 2
 		var CELL = Vector2(x, y)
 		# pick random neighbor
 		var NEIGHBOR = CELL_WALLS.keys()[randi() % CELL_WALLS.size()]
-		# if there's a wall between them, remove it
 		if MAP.get_cellv(CELL) & CELL_WALLS[NEIGHBOR]:
 			var WALLS = MAP.get_cellv(CELL) - CELL_WALLS[NEIGHBOR]
 			var N_WALLS = MAP.get_cellv(CELL + NEIGHBOR) - CELL_WALLS[-NEIGHBOR]
 			MAP.set_cellv(CELL, WALLS)
 			MAP.set_cellv(CELL + NEIGHBOR, N_WALLS)
-			# insert intermediate cell
 			if NEIGHBOR.x != 0:
 				MAP.set_cellv(CELL + NEIGHBOR / 2, 5)
 			else:
 				MAP.set_cellv(CELL + NEIGHBOR / 2, 10)
 
 func _on_NEXT_LEVEL_OPEN() -> void:
-	print((HEIGHT + 1) / 2)
 	if WIDTH == 99 and HEIGHT == 99:
 		INPUT_DEBUG = true
 		hide()
 		PLAYER.hide()
 		ANIMATION_PLAYER.stop()
 		ANIMATION_PLAYER.play("CLOSE")
-		get_node("..").add_child(MENU.instance())
+		PLAYER.get_node("UI/TIMER_NODE").record_timer()
+		PLAYER.get_node("UI/TIMER_NODE").stop_timer()
+		print("LAYER 100%")
+		GameControl.load_scene(GameControl.MENU_SCENE, get_node(".."))
 		queue_free()
 	else:
 		HEIGHT += 2
@@ -148,4 +157,5 @@ func _on_NEXT_LEVEL_OPEN() -> void:
 		GLOBAL_CAMERA_ZOOM += 0.185
 		ANIMATION_PLAYER.stop()
 		ANIMATION_PLAYER.play("CLOSE")
+		PLAYER.get_node("UI/TIMER_NODE").record_timer()
 		INIT()
