@@ -5,10 +5,10 @@ onready var ANIMATION_PLAYER = $ANIMATION_PLAYER
 onready var PLAYER = $"../PLAYER"
 onready var LABEL = $TITLE
 onready var GAME = $".."
-onready var BGM = $"../SOUNDS/BGM"
 
 func _ready() -> void:
-	yield(get_tree().get_root().get_node("INIT"), "tree_exited")
+	if get_tree().get_root().get_node("INIT") != null:
+		yield(get_tree().get_root().get_node("INIT"), "tree_exited")
 	get_node("../CURSOR").hide()
 	get_node("../EFFECTS/FX_CANVAS_LAYER #3/FX #3").hide()
 	randomize()
@@ -50,6 +50,3 @@ func _on_ENTER(NAME) -> void:
 			return false
 		yield(TIMER, "timeout")
 		LABEL.percent_visible += 0.05
-
-func play_audio() -> void:
-	BGM.playing = true
