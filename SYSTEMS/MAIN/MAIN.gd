@@ -6,15 +6,16 @@ const S : int = 4
 const W : int = 8
 var CELL_WALLS : Dictionary = {Vector2(0, -2) : N, Vector2(2, 0) : E, Vector2(0, 2) : S, Vector2(-2, 0) : W}
 var TILE_SIZE : Vector2
-var WIDTH
-var HEIGHT
-var INIT_HEIGHT = 9
-var INIT_WIDTH = 9
-var MAP_SEED
+var WIDTH : int
+var HEIGHT : int
+var INIT_HEIGHT : int = 9
+var INIT_WIDTH : int = 9
+var MAP_SEED : int
 var ERASE_FRACTION : float = 0.1
 var PLAYER_START_POS := Vector2(32, 32)
 var PLAYER_END_POS : Vector2
 var GLOBAL_CAMERA_ZOOM : float = 3
+var INPUT_DEBUG : bool = false
 onready var MAP = get_node("TILE_MAP")
 onready var PLAYER_CAMERA = get_node("../PLAYER/PLAYER_CAMERA")
 onready var GLOBAL_CAMERA = get_node("GLOBAL_CAMERA")
@@ -23,6 +24,7 @@ onready var NEXT_LEVEL = get_node("NEXT_LEVEL")
 onready var ANIMATION_PLAYER = get_node("ANIMATION_PLAYER")
 
 func _input(event : InputEvent) -> void:
+	if INPUT_DEBUG == false:
 		if event.is_action_pressed("ui_camera"):
 			if PLAYER_CAMERA.current == true:
 				PLAYER.hide()
@@ -34,6 +36,8 @@ func _input(event : InputEvent) -> void:
 				NEXT_LEVEL.show()
 				PLAYER_CAMERA.current = true
 				GLOBAL_CAMERA.current = false
+				PLAYER.show()
+				NEXT_LEVEL.show()
 		if event.is_action_pressed("ui_reset"):
 			INIT()
 		if event.is_action_pressed("ui_next_level"):
@@ -137,17 +141,15 @@ func ERASE_WALLS() -> void:
 
 func _on_NEXT_LEVEL_OPEN() -> void:
 	if WIDTH == 99 and HEIGHT == 99:
-		get_tree().get_root().set_disable_input(true)
+		INPUT_DEBUG = true
 		hide()
 		PLAYER.hide()
-		PLAYER.IN_GAME = false
 		ANIMATION_PLAYER.stop()
 		ANIMATION_PLAYER.play("CLOSE")
 		PLAYER.get_node("UI/TIMER_NODE").record_timer()
 		PLAYER.get_node("UI/TIMER_NODE").stop_timer()
 		print("LAYER 100%")
 		GameControl.load_scene(GameControl.MENU_SCENE, get_node(".."))
-		get_tree().get_root().set_disable_input(false)
 		queue_free()
 	else:
 		HEIGHT += 2

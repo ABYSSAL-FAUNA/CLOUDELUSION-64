@@ -1,7 +1,7 @@
 extends Control
 
-onready var RECT = $RECT
-onready var LABEL = $LABEL
+onready var RECT = $CANVAS_LAYER/RECT
+onready var LABEL = $CANVAS_LAYER/LABEL
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
