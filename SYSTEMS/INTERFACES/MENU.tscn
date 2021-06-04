@@ -10,10 +10,10 @@
 [ext_resource path="res://RESOURCES/PICTURES/EXSPIRAVIT_1104.png" type="Texture" id=9]
 [ext_resource path="res://RESOURCES/PICTURES/ABYSSAL_FAUNA.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:modulate")
 tracks/0/interp = 1
@@ -39,7 +39,7 @@ tracks/1/keys = {
 "values": [ Color( 0.866667, 0.890196, 0.890196, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG:color")
 tracks/0/interp = 1
@@ -113,7 +113,7 @@ tracks/5/keys = {
 "values": [ Color( 0.866667, 0.890196, 0.890196, 1 ), Color( 0.0627451, 0.12549, 0.188235, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "INIT"
 length = 5.0
 tracks/0/type = "value"
@@ -380,46 +380,32 @@ tracks/21/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/22/type = "method"
-tracks/22/path = NodePath(".")
+tracks/22/type = "value"
+tracks/22/path = NodePath("../PLAYER:MAX_SPEED")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_audio"
-} ]
-}
-tracks/23/type = "value"
-tracks/23/path = NodePath("../PLAYER:MAX_SPEED")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
 "times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 200 ]
 }
-tracks/24/type = "value"
-tracks/24/path = NodePath("../PLAYER:modulate")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
+tracks/23/type = "value"
+tracks/23/path = NodePath("../PLAYER:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
 "times": PoolRealArray( 0, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 0.2 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 0.0627451, 0.12549, 0.188235, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG:color")
 tracks/0/interp = 1
@@ -502,6 +488,7 @@ __meta__ = {
 }
 
 [node name="BG" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
@@ -513,6 +500,7 @@ __meta__ = {
 }
 
 [node name="START" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 640, 448 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 4 )
@@ -523,7 +511,8 @@ position = Vector2( 1.43051e-06, 2.86102e-06 )
 
 [node name="SHAPE" type="CollisionShape2D" parent="START/AREA"]
 position = Vector2( 7.62939e-06, 1.90735e-06 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="TIMER" type="Timer" parent="START"]
 wait_time = 0.02
@@ -550,12 +539,14 @@ margin_left = -56.0
 margin_top = -56.0
 margin_right = -8.0
 margin_bottom = -8.0
+disabled = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EXIT" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 960, 448 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 6 )
@@ -567,7 +558,8 @@ collision_layer = 0
 
 [node name="SHAPE" type="CollisionShape2D" parent="EXIT/AREA"]
 position = Vector2( 7.62939e-06, 1.90735e-06 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="TIMER" type="Timer" parent="EXIT"]
 wait_time = 0.02
@@ -594,12 +586,14 @@ margin_left = -56.0
 margin_top = -56.0
 margin_right = -8.0
 margin_bottom = -8.0
+disabled = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SETTINGS" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 320, 448 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 7 )
@@ -610,7 +604,8 @@ position = Vector2( 1.43051e-06, 2.86102e-06 )
 
 [node name="SHAPE" type="CollisionShape2D" parent="SETTINGS/AREA"]
 position = Vector2( 7.62939e-06, 1.90735e-06 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="TIMER" type="Timer" parent="SETTINGS"]
 wait_time = 0.02
@@ -637,6 +632,7 @@ margin_left = -56.0
 margin_top = -56.0
 margin_right = -8.0
 margin_bottom = -8.0
+disabled = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -646,16 +642,14 @@ __meta__ = {
 position = Vector2( 640, 360 )
 
 [node name="ANIMATION_PLAYER" type="AnimationPlayer" parent="."]
-anims/CHANGE_SCENE = SubResource( 4 )
-anims/IN = SubResource( 5 )
-anims/INIT = SubResource( 6 )
-anims/OUT = SubResource( 8 )
+anims/CHANGE_SCENE = SubResource( 2 )
+anims/IN = SubResource( 3 )
+anims/INIT = SubResource( 4 )
+anims/OUT = SubResource( 5 )
 
 [node name="BOOT_SPLASH" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 640, 360 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="PLAYER_MENU_BLOCK" type="StaticBody2D" parent="."]
 visible = false
@@ -666,14 +660,14 @@ build_mode = 1
 polygon = PoolVector2Array( 0, 0, 1280, 0, 1280, 720, 0, 720 )
 
 [node name="TITLE" type="Label" parent="."]
-margin_top = 240.0
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 320.0
 margin_right = 1280.0
-margin_bottom = 298.0
+margin_bottom = 378.0
 size_flags_horizontal = 5
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.866667, 0.890196, 0.890196, 1 )
-text = "CLOUDELUSION 64"
 align = 1
 valign = 1
 __meta__ = {
