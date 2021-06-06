@@ -156,6 +156,14 @@ font_data = ExtResource( 2 )
 [node name="INIT" type="Node"]
 script = ExtResource( 1 )
 
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.866667, 0.890196, 0.890196, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="EFFECTS" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -214,6 +222,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
+text = "SYS"
 align = 1
 valign = 1
 autowrap = true

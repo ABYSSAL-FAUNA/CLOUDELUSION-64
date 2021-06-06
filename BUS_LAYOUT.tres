@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id=1]
 resource_name = "LowPassFilter"
-db = 1
+resonance = 0.4
 
 [sub_resource type="AudioEffectReverb" id=2]
 resource_name = "Reverb"

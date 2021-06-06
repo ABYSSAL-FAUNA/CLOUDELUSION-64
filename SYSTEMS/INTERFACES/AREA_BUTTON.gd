@@ -28,7 +28,6 @@ func progress() -> void:
 		progress()
 	else:
 		STOP_ANIMATE = false
-		get_node("AREA/SHAPE").disabled = true
 		emit_signal("OPEN")
 
 func _on_BUTTON_button_down() -> void:

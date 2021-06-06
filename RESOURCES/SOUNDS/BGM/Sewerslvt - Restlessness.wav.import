@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sewerslvt - Restlessness.wav-24de65d60f307dcc4be17c91c3bef02b.sample"
+
+[deps]
+
+source_file="res://RESOURCES/SOUNDS/BGM/Sewerslvt - Restlessness.wav"
+dest_files=[ "res://.import/Sewerslvt - Restlessness.wav-24de65d60f307dcc4be17c91c3bef02b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

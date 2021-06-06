@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sewerslvt - Never Existed.wav-1a4f750be030be30f02e11a102688cde.sample"
+
+[deps]
+
+source_file="res://RESOURCES/SOUNDS/BGM/Sewerslvt - Never Existed.wav"
+dest_files=[ "res://.import/Sewerslvt - Never Existed.wav-1a4f750be030be30f02e11a102688cde.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://SYSTEMS/PLAYER/PLAYER.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SYSTEMS/INTERFACES/EFFECTS.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SYSTEMS/INTERFACES/MENU.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SYSTEMS/GAME_STRUCTURES/SOUNDS.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SYSTEMS/GAME_STRUCTURES/CURSOR.gd" type="Script" id=5]
-[ext_resource path="res://RESOURCES/PICTURES/CURSOR.png" type="Texture" id=6]
 
 [node name="GAME" type="Control"]
 modulate = Color( 1, 1, 1, 0 )
@@ -14,13 +12,6 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CURSOR" type="Sprite" parent="."]
-position = Vector2( 640, 640 )
-scale = Vector2( 0.25, 0.25 )
-z_index = 128
-texture = ExtResource( 6 )
-script = ExtResource( 5 )
 
 [node name="SOUNDS" parent="." instance=ExtResource( 4 )]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://SYSTEMS/PLAYER/PLAYER.gd" type="Script" id=1]
 [ext_resource path="res://SYSTEMS/PLAYER/PLAYER_CAMERA.gd" type="Script" id=2]
 [ext_resource path="res://RESOURCES/PICTURES/LEVEL_HINT.png" type="Texture" id=3]
+[ext_resource path="res://SYSTEMS/GAME_STRUCTURES/CURSOR.gd" type="Script" id=4]
 [ext_resource path="res://SYSTEMS/PLAYER/UI/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://RESOURCES/PICTURES/CURSOR.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 2, 2 )
 
 [node name="PLAYER" type="KinematicBody2D"]
 z_index = 120
@@ -14,10 +16,10 @@ collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="RECT" type="ColorRect" parent="."]
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
 color = Color( 0.866667, 0.890196, 0.890196, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,22 +29,33 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="PLAYER_CAMERA" type="Camera2D" parent="."]
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.1, 0.1 )
 process_mode = 0
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 6.0
+drag_margin_left = 0.4
+drag_margin_top = 0.4
+drag_margin_right = 0.4
+drag_margin_bottom = 0.4
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource( 2 )
 
 [node name="LEVEL_HINT" type="Sprite" parent="."]
-position = Vector2( -8.9407e-07, -5.96046e-07 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( -7.15256e-07, 3.57628e-07 )
+scale = Vector2( 0.375, 0.375 )
 texture = ExtResource( 3 )
 
 [node name="UI" parent="." instance=ExtResource( 5 )]
+
+[node name="CURSOR" type="Sprite" parent="."]
+position = Vector2( 640, 640 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 128
+texture = ExtResource( 6 )
+script = ExtResource( 4 )
 
 [editable path="UI"]

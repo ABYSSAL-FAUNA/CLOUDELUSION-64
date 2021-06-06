@@ -2,7 +2,7 @@ extends Node
 
 onready var ANIMATION_PLAYER = $ANIMATION_PLAYER
 
-func _ready() -> void:
+func ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	OS.window_maximized = true
 	OS.window_fullscreen = true
@@ -23,3 +23,7 @@ func load_game() -> void:
 			var PROGRESS = float(LOADER.get_stage()) / LOADER.get_stage_count()
 			get_node("LOADING_BAR/PROGRESS").margin_right = 560 * PROGRESS
 		yield(get_tree(), "physics_frame")
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		ready()

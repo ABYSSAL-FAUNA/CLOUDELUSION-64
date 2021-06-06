@@ -27,7 +27,7 @@ func load_scene(PATH, PARENT) -> void:
 			break
 		if ERR == OK:
 			var PROGRESS = float(LOADER.get_stage()) / LOADER.get_stage_count()
-			print(PROGRESS)
+			print(str(int(PROGRESS * 100)) + "%")
 		else:
 			print("ERROR LOADING FILE")
 			break

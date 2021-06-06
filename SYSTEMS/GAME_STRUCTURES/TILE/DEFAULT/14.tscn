@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://RESOURCES/PICTURES/pixel-256x256.png" type="Texture" id=1]
+
+[node name="14" type="Sprite"]
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 64, 64, 64 )
+
+[node name="BODY #01" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="SHAPE" type="CollisionPolygon2D" parent="BODY #01"]
+polygon = PoolVector2Array( -32, 32, -32, 16, 16, 16, 16, -16, -32, -16, -32, -32, 32, -32, 32, 32 )

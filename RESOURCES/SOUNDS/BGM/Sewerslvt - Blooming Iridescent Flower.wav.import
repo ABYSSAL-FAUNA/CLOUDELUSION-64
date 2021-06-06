@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sewerslvt - Blooming Iridescent Flower.wav-2c8c7d605c11524d854352a165a8ac13.sample"
+
+[deps]
+
+source_file="res://RESOURCES/SOUNDS/BGM/Sewerslvt - Blooming Iridescent Flower.wav"
+dest_files=[ "res://.import/Sewerslvt - Blooming Iridescent Flower.wav-2c8c7d605c11524d854352a165a8ac13.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

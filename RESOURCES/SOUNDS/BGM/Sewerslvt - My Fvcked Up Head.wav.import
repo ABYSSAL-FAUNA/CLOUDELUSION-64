@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sewerslvt - My Fvcked Up Head.wav-91fa157593a4b8ef1c5a5f69ab5ad203.sample"
+
+[deps]
+
+source_file="res://RESOURCES/SOUNDS/BGM/Sewerslvt - My Fvcked Up Head.wav"
+dest_files=[ "res://.import/Sewerslvt - My Fvcked Up Head.wav-91fa157593a4b8ef1c5a5f69ab5ad203.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

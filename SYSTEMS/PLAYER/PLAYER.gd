@@ -1,13 +1,16 @@
 extends KinematicBody2D
-class_name PLAYER
 
-export var MAX_SPEED = 200
-export var ACCELERATION = 500
+export (int) var MAX_SPEED
+export (int) var ACCELERATION
 var MOTION = Vector2.ZERO
 var DIRECTION
 var IDLE_STATE : bool
 var IN_GAME : bool
 onready var LEVEL_HINT = $LEVEL_HINT
+onready var CURSOR= $CURSOR
+
+func _ready() -> void:
+	CURSOR.hide()
 
 func _physics_process(delta) -> void:
 	var AXIS = Vector2.ZERO
